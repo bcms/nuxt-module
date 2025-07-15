@@ -31,7 +31,7 @@ configuration information on BCMS dashboard in the `API Keys` section.
 
 ```ts
 export default defineNuxtConfig({
-    modules: ['@nuxtjs/bcms'],
+    modules: ['nuxt-bcms'],
     // ...
     bcms: {
         orgId: process.env.BCMS_ORG_ID,
@@ -103,12 +103,12 @@ npm run release
 
 <!-- Badges -->
 
-[npm-version-src]: https://img.shields.io/npm/v/@nuxtjs/bcms/latest.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-version-href]: https://npmjs.com/package/@nuxtjs/bcms
-[npm-downloads-src]: https://img.shields.io/npm/dm/@nuxtjs/bcms.svg?style=flat&colorA=020420&colorB=00DC82
-[npm-downloads-href]: https://npm.chart.dev/@nuxtjs/bcms
-[license-src]: https://img.shields.io/npm/l/@nuxtjs/bcms.svg?style=flat&colorA=020420&colorB=00DC82
-[license-href]: https://npmjs.com/package/@nuxtjs/bcms
+[npm-version-src]: https://img.shields.io/npm/v/nuxt-bcms/latest.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-version-href]: https://npmjs.com/package/nuxt-bcms
+[npm-downloads-src]: https://img.shields.io/npm/dm/nuxt-bcms.svg?style=flat&colorA=020420&colorB=00DC82
+[npm-downloads-href]: https://npm.chart.dev/nuxt-bcms
+[license-src]: https://img.shields.io/npm/l/nuxt-bcms.svg?style=flat&colorA=020420&colorB=00DC82
+[license-href]: https://npmjs.com/package/nuxt-bcms
 [nuxt-src]: https://img.shields.io/badge/Nuxt-020420?logo=nuxt.js
 [nuxt-href]: https://nuxt.com
 ```
