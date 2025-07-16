@@ -1,49 +1,56 @@
 name: ci
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+    push:
+        branches:
+            - main
+    pull_request:
+        branches:
+            - main
 
 jobs:
-  lint:
-    runs-on: ubuntu-latest
+    lint:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
 
-      - run: npm i -g --force corepack@latest && corepack enable
+            - run: npm i -g --force corepack@latest && corepack enable
 
-      - name: Install dependencies
-        run: npx nypm@latest i
+            - name: Install dependencies
+              run: npx nypm@latest i
 
-      - name: Lint
-        run: npm run lint
+            - name: Lint
+              run: npm run lint
 
-  test:
-    runs-on: ubuntu-latest
+    test:
+        runs-on: ubuntu-latest
 
-    steps:
-      - uses: actions/checkout@v4
+        steps:
+            - uses: actions/checkout@v4
 
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
+            - uses: actions/setup-node@v4
+              with:
+                  node-version: 20
 
-      - run: npm i -g --force corepack@latest && corepack enable
+            - run: npm i -g --force corepack@latest && corepack enable
 
-      - name: Install dependencies
-        run: npx nypm@latest i
+            - name: Install dependencies
+              run: npx nypm@latest i
 
-      - name: Playground prepare
-        run: npm run dev:prepare
+            - name: Playground prepare
+              run: npm run dev:prepare
 
-      - name: Test
-        run: npm run test
+            - name: Test
+              run: npm run test
+              env:
+                  BCMS_ORG_ID: ${{ secrets.BCMS_ORG_ID }}
+                  BCMS_INSTANCE_ID: ${{ secrets.BCMS_INSTANCE_ID }}
+                  BCMS_PRIVATE_KEY_ID: ${{ secrets.BCMS_PRIVATE_KEY_ID }}
+                  BCMS_PRIVATE_KEY_SECRET: ${{ secrets.BCMS_PRIVATE_KEY_SECRET }}
+                  BCMS_PUBLIC_KEY_ID: ${{ secrets.BCMS_PUBLIC_KEY_ID }}
+                  BCMS_PUBLIC_KEY_SECRET: ${{ secrets.BCMS_PUBLIC_KEY_SECRET }}
