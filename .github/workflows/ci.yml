@@ -44,6 +44,13 @@ jobs:
 
             - name: Playground prepare
               run: npm run dev:prepare
+              env:
+                  BCMS_ORG_ID: ${{ secrets.BCMS_ORG_ID }}
+                  BCMS_INSTANCE_ID: ${{ secrets.BCMS_INSTANCE_ID }}
+                  BCMS_PRIVATE_KEY_ID: ${{ secrets.BCMS_PRIVATE_KEY_ID }}
+                  BCMS_PRIVATE_KEY_SECRET: ${{ secrets.BCMS_PRIVATE_KEY_SECRET }}
+                  BCMS_PUBLIC_KEY_ID: ${{ secrets.BCMS_PUBLIC_KEY_ID }}
+                  BCMS_PUBLIC_KEY_SECRET: ${{ secrets.BCMS_PUBLIC_KEY_SECRET }}
 
             - name: Test
               run: npm run test
