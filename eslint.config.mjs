@@ -35,6 +35,8 @@ export default createConfigForNuxt({
             '@stylistic/quote-props': ['off'],
             '@typescript-eslint/no-shadow': 'error',
             '@typescript-eslint/no-explicit-any': 'off',
+            '@stylistic/jsx-curly-brace-presence': ['off'],
+            '@stylistic/jsx-indent-props': ['off'],
             // '@typescript-eslint/consistent-type-imports': 'error',
             // '@typescript-eslint/no-unused-vars': [
             //     2,
