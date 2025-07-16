@@ -4,6 +4,7 @@ import type { DefineSetupFnComponent, PropType, StyleValue } from 'vue';
 import type { JSX } from 'vue/jsx-runtime';
 import type { EntryContentParsedItem } from '@thebcms/types';
 import type { Client, ClientConfig } from '@thebcms/client';
+import type { BCMSEntryContentParsedItem } from '#bcms-types';
 
 export interface BCMSWidgetComponents {
     [bcmsWidgetName: string]: DefineSetupFnComponent<
@@ -21,7 +22,7 @@ export interface BCMSContentManagerProps {
     id?: string;
     className?: string;
     style?: StyleValue;
-    items: EntryContentParsedItem[];
+    items: EntryContentParsedItem[] | BCMSEntryContentParsedItem[];
     widgetComponents?: BCMSWidgetComponents;
     nodeParser?(item: EntryContentParsedItem): string | JSX.Element;
     client?: Client | ClientConfig;
@@ -33,7 +34,9 @@ export const BCMSContentManager = defineComponent({
         class: String,
         style: String,
         items: {
-            type: Array as PropType<EntryContentParsedItem[]>,
+            type: Array as PropType<
+                EntryContentParsedItem[] | BCMSEntryContentParsedItem[]
+            >,
             required: true,
         },
         widgetComponents: Object as PropType<BCMSWidgetComponents>,

@@ -193,6 +193,7 @@ export default defineNuxtModule<ModuleOptions>({
             '@thebcms/client',
             'form-data',
             'uuid',
+            'buffer',
         );
 
         addImportsDir(resolver.resolve('./runtime/composables'));
@@ -219,7 +220,6 @@ export default defineNuxtModule<ModuleOptions>({
         nuxt.hook('nitro:config', (nitroConfig) => {
             nitroConfig.imports = nitroConfig.imports || {};
             nitroConfig.imports.imports = nitroConfig.imports.imports || [];
-
             nitroConfig.imports.imports.push({
                 name: 'useBcmsPrivate',
                 from: resolver.resolve('./runtime/utils'),
