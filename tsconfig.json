@@ -4,10 +4,5 @@
     "dist",
     "node_modules",
     "playground",
-  ],
-  "compilerOptions": {
-    "paths": {
-      "#bcms-types": ["./bcms/type/ts"]
-    },
-  }
+  ]
 }
