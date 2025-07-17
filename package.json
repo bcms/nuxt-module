@@ -1,6 +1,6 @@
 {
     "name": "@thebcms/nuxt",
-    "version": "1.0.3",
+    "version": "1.0.4",
     "description": "Nuxt module for BCMS",
     "repository": {
         "type": "git",
