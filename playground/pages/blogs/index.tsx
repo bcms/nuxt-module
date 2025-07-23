@@ -1,5 +1,4 @@
 import type { BlogsResponse } from 'server/api/blogs';
-import { BCMSImage } from '../../src/runtime/components/image';
 
 export default defineNuxtComponent({
     async setup() {
@@ -22,7 +21,7 @@ export default defineNuxtComponent({
                                 to={`/blogs/${item.slug}`}
                                 style={`width: 320px`}
                             >
-                                <BCMSImage
+                                <BcmsImage
                                     style={`width: 300px; height: 220px; object-fit: cover;`}
                                     media={item.cover_image}
                                 />

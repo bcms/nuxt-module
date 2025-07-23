@@ -1,6 +1,4 @@
 import type { BlogResponse } from 'server/api/blog';
-import { BCMSContentManager } from '../../../src/runtime/components/content';
-import { BCMSImage } from '../../../src/runtime/components/image';
 import { Widgets } from '../../components/widgets';
 
 export default defineNuxtComponent({
@@ -22,13 +20,13 @@ export default defineNuxtComponent({
                 <div>
                     <div>
                         <h1>{data.value.meta.title}</h1>
-                        <BCMSImage
+                        <BcmsImage
                             style={`width: 100%; height: 800px; object-fit: cover;`}
                             media={data.value.meta.cover_image}
                         />
                     </div>
                     <div>
-                        <BCMSContentManager
+                        <BcmsContentManager
                             items={data.value.content}
                             widgetComponents={Widgets}
                         />

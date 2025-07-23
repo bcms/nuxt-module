@@ -1,5 +1,4 @@
 import type { HomeRespones } from 'server/api/home';
-import { BCMSContentManager } from '../../src/runtime/components/content';
 
 export default defineNuxtComponent({
     async setup() {
@@ -16,7 +15,7 @@ export default defineNuxtComponent({
             return (
                 <div>
                     <h1>{data.value.meta.title}</h1>
-                    <BCMSContentManager items={data.value.content} />
+                    <BcmsContentManager items={data.value.content} />
                     <NuxtLink to={'/blogs'}>Go to Blogs</NuxtLink>
                 </div>
             );
