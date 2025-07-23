@@ -1,12 +1,12 @@
-import { defineComponent, h } from 'vue';
+import { h, defineComponent } from 'vue';
 import type { DefineSetupFnComponent, PropType } from 'vue';
-import type { BCMSWidgetComponents } from './main';
+import type { BCMSWidgetComponents } from './bcms-content';
 import type { JSX } from 'vue/jsx-runtime';
 import type {
     EntryContentParsedItem,
     PropMediaDataParsed,
 } from '@thebcms/types';
-import { BCMSImage } from '../image';
+import { BCMSImage } from './bcms-image';
 
 export interface BCMSContentItemProps {
     item: EntryContentParsedItem;
@@ -69,3 +69,4 @@ export const BCMSContentItem = defineComponent({
         };
     },
 });
+export default BCMSContentItem;

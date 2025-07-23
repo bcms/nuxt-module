@@ -1,6 +1,5 @@
 import {
     computed,
-    defineComponent,
     h,
     onBeforeUnmount,
     onBeforeUpdate,
@@ -10,11 +9,9 @@ import {
 import type { PropType, StyleValue } from 'vue';
 import type { Media, MediaType, PropMediaDataParsed } from '@thebcms/types';
 import { ImageHandler } from '@thebcms/client';
-import type { MediaExtended, Client } from '@thebcms/client';
-
-declare global {
-    var useBcmsPublic: () => Client;
-}
+import type { MediaExtended } from '@thebcms/client';
+import { useBcmsPublic } from '../composables/useBcmsClient';
+import { defineNuxtComponent } from '#app';
 
 export interface BCMSImageProps {
     id?: string;
@@ -27,7 +24,7 @@ export interface BCMSImageProps {
 
 const allowedMediaTypes: (keyof typeof MediaType)[] = ['IMG', 'SVG'];
 
-export const BCMSImage = defineComponent({
+export const BCMSImage = defineNuxtComponent({
     props: {
         id: String,
         class: String,
@@ -76,12 +73,16 @@ export const BCMSImage = defineComponent({
 
         onMounted(() => {
             idBuffer = props.media._id;
-            window.addEventListener('resize', resizeHandler);
             resizeHandler();
+            if (typeof window !== 'undefined') {
+                window.addEventListener('resize', resizeHandler);
+            }
         });
 
         onBeforeUnmount(() => {
-            window.removeEventListener('resize', resizeHandler);
+            if (typeof window !== 'undefined') {
+                window.removeEventListener('resize', resizeHandler);
+            }
         });
 
         onBeforeUpdate(() => {
@@ -94,11 +95,16 @@ export const BCMSImage = defineComponent({
 
         return () => {
             if (props.useOriginal) {
+                const origin = client
+                    .getConfig()
+                    .cmsOrigin.includes('app.thebcms.com')
+                    ? 'https://cdn.thebcms.com'
+                    : client.getConfig().cmsOrigin;
                 const original =
-                    client.getConfig().cmsOrigin +
+                    origin +
                     client.media.toUri(props.media._id, props.media.name);
                 const webp =
-                    client.getConfig().cmsOrigin +
+                    origin +
                     client.media.toUri(props.media._id, props.media.name, {
                         webp: true,
                     });
@@ -198,3 +204,4 @@ export const BCMSImage = defineComponent({
         };
     },
 });
+export default BCMSImage;

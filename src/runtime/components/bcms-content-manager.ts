@@ -1,6 +1,6 @@
-import { BCMSContentItem } from './item';
-import { defineComponent, h } from 'vue';
+import { BCMSContentItem } from './bcms-content-item';
 import type { DefineSetupFnComponent, PropType, StyleValue } from 'vue';
+import { h, defineComponent } from 'vue';
 import type { JSX } from 'vue/jsx-runtime';
 import type { EntryContentParsedItem } from '@thebcms/types';
 import type { Client, ClientConfig } from '@thebcms/client';
@@ -64,3 +64,4 @@ export const BCMSContentManager = defineComponent({
         };
     },
 });
+export default BCMSContentManager;
