@@ -11,6 +11,7 @@ import { Client } from '@thebcms/client';
 import { FS } from '@thebcms/utils/fs';
 import { ObjectUtility } from '@thebcms/utils/object-utility';
 import type { ObjectSchema } from '@thebcms/utils/object-utility';
+import defu from 'defu';
 import path from 'node:path';
 
 export interface BCMSNuxtModuleClientOptions {
@@ -141,6 +142,7 @@ export default defineNuxtModule<ModuleOptions>({
     defaults: {},
     setup(options, nuxt) {
         if (JSON.stringify(options) === '{}') {
+            console.warn('BCMS configuration not found, module not mounted');
             return;
         }
         const checkOptions = ObjectUtility.compareWithSchema(
@@ -188,7 +190,19 @@ export default defineNuxtModule<ModuleOptions>({
         nuxt.options.runtimeConfig.public.bcms = {
             clientConfig: bcmsPublic.getConfig(),
         };
-
+        nuxt.options.vite = defu(nuxt.options.vite, {
+            optimizeDeps: {
+                include: ['@thebcms/client', 'form-data', 'uuid', 'buffer'],
+            },
+            define: {
+                'global.Buffer': ['Buffer'],
+            },
+            resolve: {
+                alias: {
+                    buffer: 'buffer',
+                },
+            },
+        });
         nuxt.options.build.transpile.push(
             '@thebcms/client',
             'form-data',
@@ -200,7 +214,7 @@ export default defineNuxtModule<ModuleOptions>({
 
         addComponentsDir({
             path: resolver.resolve('./runtime/components'),
-            extensions: ['ts'],
+            extensions: ['js', 'ts', 'mjs'],
         });
 
         addServerPlugin(resolver.resolve('./runtime/nitro-plugin'));
