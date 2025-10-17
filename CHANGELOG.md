@@ -1,6 +1,10 @@
 # Changelog
 
 
+## v1.1.1
+
+[compare changes](https://github.com/bcms/nuxt-module/compare/v1.0.5...v1.1.1)
+
 ## v1.0.5
 
 [compare changes](https://github.com/bcms/nuxt-module/compare/v1.0.4...v1.0.5)
