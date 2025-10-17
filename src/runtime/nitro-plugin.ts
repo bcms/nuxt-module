@@ -20,6 +20,7 @@ export default defineNitroPlugin(() => {
         privateClientConfig.instanceId,
         privateClientConfig.apiKey,
         {
+            cmsOrigin: privateClientConfig.cmsOrigin,
             useMemCache: privateClientConfig.useMemCache,
             debug: privateClientConfig.debug,
             enableSocket: privateClientConfig.enableSocket,
@@ -31,6 +32,7 @@ export default defineNitroPlugin(() => {
         publicClientConfig.instanceId,
         publicClientConfig.apiKey,
         {
+            cmsOrigin: publicClientConfig.cmsOrigin,
             useMemCache: publicClientConfig.useMemCache,
             debug: publicClientConfig.debug,
             enableSocket: publicClientConfig.enableSocket,

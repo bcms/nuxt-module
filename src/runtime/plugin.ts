@@ -16,6 +16,7 @@ export default defineNuxtPlugin((nuxtApp) => {
             debug: clientConfig.debug,
             enableSocket: clientConfig.enableSocket,
             injectSvg: clientConfig.injectSvg,
+            cmsOrigin: clientConfig.cmsOrigin,
         },
     );
     return {
