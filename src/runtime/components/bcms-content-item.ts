@@ -1,12 +1,12 @@
 import { h, defineComponent } from 'vue';
 import type { DefineSetupFnComponent, PropType } from 'vue';
-import type { BCMSWidgetComponents } from './bcms-content';
+import type { BCMSWidgetComponents } from './bcms-content-manager';
 import type { JSX } from 'vue/jsx-runtime';
 import type {
     EntryContentParsedItem,
     PropMediaDataParsed,
 } from '@thebcms/types';
-import { BCMSImage } from './bcms-image';
+import { BCMSMedia } from './bcms-media';
 
 export interface BCMSContentItemProps {
     item: EntryContentParsedItem;
@@ -45,8 +45,8 @@ export const BCMSContentItem = defineComponent({
                     );
                 }
             } else if (props.item.type === 'media') {
-                return h(BCMSImage, {
-                    class: 'media',
+                return h(BCMSMedia, {
+                    class: 'bcms-media',
                     media: props.item.value as PropMediaDataParsed,
                 });
             }

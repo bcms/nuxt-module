@@ -22,7 +22,7 @@ export interface BCMSImageProps {
     useOriginal?: boolean;
 }
 
-const allowedMediaTypes: (keyof typeof MediaType)[] = ['IMG', 'SVG'];
+const allowedMediaTypes: (keyof typeof MediaType)[] = ['IMG', 'SVG', 'GIF'];
 
 export const BCMSImage = defineNuxtComponent({
     props: {
@@ -123,7 +123,7 @@ export const BCMSImage = defineNuxtComponent({
                               : {
                                     width: '100%',
                                 },
-                        class: props.class,
+                        class: `bcms-image ${props.class || ''}`,
                         src: original,
                         alt:
                             props.altText ||
@@ -159,7 +159,7 @@ export const BCMSImage = defineNuxtComponent({
                 return h('img', {
                     id: props.id,
                     style: props.style,
-                    class: props.class,
+                    class: `bcms-image ${props.class || ''}`,
                     src: srcSet.value.original,
                     alt:
                         props.altText ||
@@ -189,7 +189,7 @@ export const BCMSImage = defineNuxtComponent({
                               : {
                                     width: '100%',
                                 },
-                        class: props.class,
+                        class: `bcms-image ${props.class || ''}`,
                         src: srcSet.value.original,
                         alt:
                             props.altText ||
