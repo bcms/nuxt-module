@@ -4,6 +4,7 @@ export default defineNuxtConfig({
     bcms: {
         orgId: process.env.BCMS_ORG_ID,
         instanceId: process.env.BCMS_INSTANCE_ID,
+        apiOrigin: process.env.BCMS_ORIGIN,
         privateClientOptions: {
             key: {
                 id: process.env.BCMS_PRIVATE_KEY_ID,

@@ -13,9 +13,16 @@ export default defineNuxtComponent({
                 return <div>Loading...</div>;
             }
             return (
-                <div>
+                <div
+                    style={{
+                        maxWidth: '800px',
+                    }}
+                >
                     <h1>{data.value.meta.title}</h1>
-                    <BcmsContentManager items={data.value.content} />
+                    <BcmsContentManager
+                        style={`max-width: 400px; display: flex; flex-direction: column; gap: 20px;`}
+                        items={data.value.content}
+                    />
                     <NuxtLink to={'/blogs'}>Go to Blogs</NuxtLink>
                 </div>
             );
