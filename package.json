@@ -39,9 +39,9 @@
     },
     "dependencies": {
         "@nuxt/kit": "^3.17.6",
-        "@thebcms/client": "^1.5.7",
-        "@thebcms/types": "^1.5.1",
-        "@thebcms/utils": "^1.1.0",
+        "@thebcms/client": "^2.0.0",
+        "@thebcms/types": "^2.0.0",
+        "@thebcms/utils": "^2.0.0",
         "defu": "^6.1.4"
     },
     "devDependencies": {

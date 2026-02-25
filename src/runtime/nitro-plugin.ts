@@ -15,30 +15,22 @@ export default defineNitroPlugin(() => {
     const publicClientConfig = (
         runtimeConfig.public.bcms as BcmsNuxtRuntimeConfig
     ).clientConfig;
-    const privateClient = new Client(
-        privateClientConfig.orgId,
-        privateClientConfig.instanceId,
-        privateClientConfig.apiKey,
-        {
-            cmsOrigin: privateClientConfig.cmsOrigin,
-            useMemCache: privateClientConfig.useMemCache,
-            debug: privateClientConfig.debug,
-            enableSocket: privateClientConfig.enableSocket,
-            injectSvg: privateClientConfig.injectSvg,
-        },
-    );
-    const publicClient = new Client(
-        publicClientConfig.orgId,
-        publicClientConfig.instanceId,
-        publicClientConfig.apiKey,
-        {
-            cmsOrigin: publicClientConfig.cmsOrigin,
-            useMemCache: publicClientConfig.useMemCache,
-            debug: publicClientConfig.debug,
-            enableSocket: publicClientConfig.enableSocket,
-            injectSvg: publicClientConfig.injectSvg,
-        },
-    );
+    const privateClient = new Client({
+        apiKey: `${privateClientConfig.apiKey.id}.${privateClientConfig.apiKey.secret}.${privateClientConfig.instanceId}`,
+        cmsOrigin: privateClientConfig.cmsOrigin,
+        useMemCache: privateClientConfig.useMemCache,
+        debug: privateClientConfig.debug,
+        enableSocket: privateClientConfig.enableSocket,
+        injectSvg: privateClientConfig.injectSvg,
+    });
+    const publicClient = new Client({
+        apiKey: `${publicClientConfig.apiKey.id}.${publicClientConfig.apiKey.secret}.${publicClientConfig.instanceId}`,
+        cmsOrigin: publicClientConfig.cmsOrigin,
+        useMemCache: publicClientConfig.useMemCache,
+        debug: publicClientConfig.debug,
+        enableSocket: publicClientConfig.enableSocket,
+        injectSvg: publicClientConfig.injectSvg,
+    });
     globalThis.bcmsPrivateClient = privateClient;
     globalThis.bcmsPublicClient = publicClient;
 });

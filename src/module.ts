@@ -6,7 +6,7 @@ import {
     addServerPlugin,
     addComponentsDir,
 } from '@nuxt/kit';
-import type { ClientApiKey, ClientConfig } from '@thebcms/client';
+import type { ClientConfig } from '@thebcms/client';
 import { Client } from '@thebcms/client';
 import { FS } from '@thebcms/utils/fs';
 import { ObjectUtility } from '@thebcms/utils/object-utility';
@@ -15,8 +15,8 @@ import defu from 'defu';
 import path from 'node:path';
 
 export interface BCMSNuxtModuleClientOptions {
-    key: ClientApiKey;
     options?: {
+        apiKey?: string;
         /**
          * Is memory caching active
          */
@@ -36,24 +36,14 @@ export interface BCMSNuxtModuleClientOptions {
     };
 }
 const bcmsNuxtModuleClientOptionsSchema: ObjectSchema = {
-    key: {
-        __type: 'object',
-        __required: true,
-        __child: {
-            id: {
-                __type: 'string',
-                __required: true,
-            },
-            secret: {
-                __type: 'string',
-                __required: true,
-            },
-        },
-    },
     options: {
         __type: 'object',
         __required: false,
         __child: {
+            apiKey: {
+                __type: 'string',
+                __required: false,
+            },
             useMemCache: {
                 __type: 'boolean',
                 __required: false,
@@ -77,16 +67,6 @@ const bcmsNuxtModuleClientOptionsSchema: ObjectSchema = {
 // Module options TypeScript interface definition
 export interface ModuleOptions {
     /**
-     * Organization ID - Can be obtained on API Key screen
-     * on the BCMS dashboard
-     */
-    orgId: string;
-    /**
-     * Instance ID - Can be obtained on API Key screen
-     * on the BCMS dashboard
-     */
-    instanceId: string;
-    /**
      * URL of the active CMS backend
      */
     apiOrigin?: string;
@@ -102,14 +82,6 @@ export interface ModuleOptions {
     publicClientOptions: BCMSNuxtModuleClientOptions;
 }
 const moduleOptionsSchema: ObjectSchema = {
-    orgId: {
-        __type: 'string',
-        __required: true,
-    },
-    instanceId: {
-        __type: 'string',
-        __required: true,
-    },
     apiOrigin: {
         __type: 'string',
         __required: false,
@@ -155,12 +127,10 @@ export default defineNuxtModule<ModuleOptions>({
         }
         const resolver = createResolver(import.meta.url);
         const bcmsPrivate = new Client(
-            options.orgId,
-            options.instanceId,
-            {
-                id: options.privateClientOptions.key.id,
-                secret: options.privateClientOptions.key.secret,
-            },
+            // {
+            //     id: options.privateClientOptions.key.id,
+            //     secret: options.privateClientOptions.key.secret,
+            // },
             options.privateClientOptions.options
                 ? {
                       ...options.privateClientOptions.options,
@@ -172,12 +142,6 @@ export default defineNuxtModule<ModuleOptions>({
             clientConfig: bcmsPrivate.getConfig(),
         };
         const bcmsPublic = new Client(
-            options.orgId,
-            options.instanceId,
-            {
-                id: options.publicClientOptions.key.id,
-                secret: options.publicClientOptions.key.secret,
-            },
             options.publicClientOptions.options
                 ? {
                       ...options.publicClientOptions.options,

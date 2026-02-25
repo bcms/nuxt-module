@@ -13,18 +13,14 @@ export function useBcmsClient(): [Client, boolean] {
         (runtimeConfig.bcms as BcmsNuxtRuntimeConfig)?.clientConfig ||
         (runtimeConfig.public.bcms as BcmsNuxtRuntimeConfig).clientConfig;
     const isPrivateClient = !!runtimeConfig.bcms;
-    const client = new Client(
-        clientConfig.orgId,
-        clientConfig.instanceId,
-        clientConfig.apiKey,
-        {
-            useMemCache: clientConfig.useMemCache,
-            debug: clientConfig.debug,
-            enableSocket: clientConfig.enableSocket,
-            injectSvg: clientConfig.injectSvg,
-            cmsOrigin: clientConfig.cmsOrigin,
-        },
-    );
+    const client = new Client({
+        apiKey: `${clientConfig.apiKey.id}.${clientConfig.apiKey.secret}.${clientConfig.instanceId}`,
+        useMemCache: clientConfig.useMemCache,
+        debug: clientConfig.debug,
+        enableSocket: clientConfig.enableSocket,
+        injectSvg: clientConfig.injectSvg,
+        cmsOrigin: clientConfig.cmsOrigin,
+    });
     return [client, isPrivateClient];
 }
 
@@ -40,18 +36,14 @@ export function useBcmsPrivate(): Client {
     }
     const clientConfig = (runtimeConfig.bcms as BcmsNuxtRuntimeConfig)
         .clientConfig;
-    const client = new Client(
-        clientConfig.orgId,
-        clientConfig.instanceId,
-        clientConfig.apiKey,
-        {
-            useMemCache: clientConfig.useMemCache,
-            debug: clientConfig.debug,
-            enableSocket: clientConfig.enableSocket,
-            injectSvg: clientConfig.injectSvg,
-            cmsOrigin: clientConfig.cmsOrigin,
-        },
-    );
+    const client = new Client({
+        apiKey: `${clientConfig.apiKey.id}.${clientConfig.apiKey.secret}.${clientConfig.instanceId}`,
+        useMemCache: clientConfig.useMemCache,
+        debug: clientConfig.debug,
+        enableSocket: clientConfig.enableSocket,
+        injectSvg: clientConfig.injectSvg,
+        cmsOrigin: clientConfig.cmsOrigin,
+    });
     return client;
 }
 
@@ -62,17 +54,13 @@ export function useBcmsPublic(): Client {
     const runtimeConfig = useRuntimeConfig();
     const clientConfig = (runtimeConfig.public.bcms as BcmsNuxtRuntimeConfig)
         .clientConfig;
-    const client = new Client(
-        clientConfig.orgId,
-        clientConfig.instanceId,
-        clientConfig.apiKey,
-        {
-            useMemCache: clientConfig.useMemCache,
-            debug: clientConfig.debug,
-            enableSocket: clientConfig.enableSocket,
-            injectSvg: clientConfig.injectSvg,
-            cmsOrigin: clientConfig.cmsOrigin,
-        },
-    );
+    const client = new Client({
+        apiKey: `${clientConfig.apiKey.id}.${clientConfig.apiKey.secret}.${clientConfig.instanceId}`,
+        useMemCache: clientConfig.useMemCache,
+        debug: clientConfig.debug,
+        enableSocket: clientConfig.enableSocket,
+        injectSvg: clientConfig.injectSvg,
+        cmsOrigin: clientConfig.cmsOrigin,
+    });
     return client;
 }
