@@ -1,6 +1,18 @@
 # Changelog
 
 
+## v2.0.1
+
+[compare changes](https://github.com/bcms/nuxt-module/compare/v1.1.1...v2.0.1)
+
+### 🏡 Chore
+
+- **release:** V1.1.2 ([9862d24](https://github.com/bcms/nuxt-module/commit/9862d24))
+
+### ❤️ Contributors
+
+- Bbanez <banezprod@gmail.com>
+
 ## v1.1.2
 
 [compare changes](https://github.com/bcms/nuxt-module/compare/v1.1.1...v1.1.2)
