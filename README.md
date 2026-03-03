@@ -34,25 +34,13 @@ export default defineNuxtConfig({
     modules: ['@thebcms/nuxt'],
     // ...
     bcms: {
-        orgId: process.env.BCMS_ORG_ID,
-        instanceId: process.env.BCMS_INSTANCE_ID,
         privateClientOptions: {
-            key: {
-                id: process.env.BCMS_PRIVATE_KEY_ID,
-                secret: process.env.BCMS_PRIVATE_KEY_SECRET,
-            },
-            options: {
-                injectSvg: true,
-            },
+            id: process.env.BCMS_API_KEY,
+            injectSvg: true,
         },
         publicClientOptions: {
-            key: {
-                id: process.env.BCMS_PUBLIC_KEY_ID,
-                secret: process.env.BCMS_PUBLIC_KEY_SECRET,
-            },
-            options: {
-                injectSvg: true,
-            },
+            id: process.env.NUXT_PUBLIC_BCMS_API_KEY,
+            injectSvg: true,
         },
     },
 });
