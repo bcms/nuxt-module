@@ -16,7 +16,7 @@ export default defineNitroPlugin(() => {
         runtimeConfig.public.bcms as BcmsNuxtRuntimeConfig
     ).clientConfig;
     const privateClient = new Client({
-        apiKey: `${privateClientConfig.apiKey.id}.${privateClientConfig.apiKey.secret}.${privateClientConfig.instanceId}`,
+        apiKey: `${privateClientConfig.apiKey}`,
         cmsOrigin: privateClientConfig.cmsOrigin,
         useMemCache: privateClientConfig.useMemCache,
         debug: privateClientConfig.debug,
@@ -24,7 +24,7 @@ export default defineNitroPlugin(() => {
         injectSvg: privateClientConfig.injectSvg,
     });
     const publicClient = new Client({
-        apiKey: `${publicClientConfig.apiKey.id}.${publicClientConfig.apiKey.secret}.${publicClientConfig.instanceId}`,
+        apiKey: `${publicClientConfig.apiKey}`,
         cmsOrigin: publicClientConfig.cmsOrigin,
         useMemCache: publicClientConfig.useMemCache,
         debug: publicClientConfig.debug,

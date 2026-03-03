@@ -39,7 +39,7 @@
     },
     "dependencies": {
         "@nuxt/kit": "^3.17.6",
-        "@thebcms/client": "^2.0.0",
+        "@thebcms/client": "^2.0.1",
         "@thebcms/types": "^2.0.0",
         "@thebcms/utils": "^2.0.0",
         "defu": "^6.1.4"

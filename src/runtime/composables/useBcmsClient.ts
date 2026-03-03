@@ -14,7 +14,7 @@ export function useBcmsClient(): [Client, boolean] {
         (runtimeConfig.public.bcms as BcmsNuxtRuntimeConfig).clientConfig;
     const isPrivateClient = !!runtimeConfig.bcms;
     const client = new Client({
-        apiKey: `${clientConfig.apiKey.id}.${clientConfig.apiKey.secret}.${clientConfig.instanceId}`,
+        apiKey: `${clientConfig.apiKey}`,
         useMemCache: clientConfig.useMemCache,
         debug: clientConfig.debug,
         enableSocket: clientConfig.enableSocket,
@@ -37,7 +37,7 @@ export function useBcmsPrivate(): Client {
     const clientConfig = (runtimeConfig.bcms as BcmsNuxtRuntimeConfig)
         .clientConfig;
     const client = new Client({
-        apiKey: `${clientConfig.apiKey.id}.${clientConfig.apiKey.secret}.${clientConfig.instanceId}`,
+        apiKey: `${clientConfig.apiKey}`,
         useMemCache: clientConfig.useMemCache,
         debug: clientConfig.debug,
         enableSocket: clientConfig.enableSocket,
@@ -55,7 +55,7 @@ export function useBcmsPublic(): Client {
     const clientConfig = (runtimeConfig.public.bcms as BcmsNuxtRuntimeConfig)
         .clientConfig;
     const client = new Client({
-        apiKey: `${clientConfig.apiKey.id}.${clientConfig.apiKey.secret}.${clientConfig.instanceId}`,
+        apiKey: `${clientConfig.apiKey}`,
         useMemCache: clientConfig.useMemCache,
         debug: clientConfig.debug,
         enableSocket: clientConfig.enableSocket,

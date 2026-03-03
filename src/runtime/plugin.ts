@@ -8,7 +8,7 @@ export default defineNuxtPlugin((nuxtApp) => {
         (nuxtApp.$config.public.bcms as BcmsNuxtRuntimeConfig).clientConfig;
     const isPrivateClient = !!nuxtApp.$config.bcms;
     const client = new Client({
-        apiKey: `${clientConfig.apiKey.id}.${clientConfig.apiKey.secret}.${clientConfig.instanceId}`,
+        apiKey: `${clientConfig.apiKey}`,
         useMemCache: clientConfig.useMemCache,
         debug: clientConfig.debug,
         enableSocket: clientConfig.enableSocket,
