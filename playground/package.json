@@ -8,9 +8,9 @@
     "generate": "nuxi generate"
   },
   "dependencies": {
-    "@thebcms/client": "^1.5.6",
-    "@thebcms/types": "^1.4.0",
-    "@thebcms/utils": "^1.1.0",
+    "@thebcms/client": "^2.0.1",
+    "@thebcms/types": "^2.0.0",
+    "@thebcms/utils": "^2.0.0",
     "nuxt": "^3.17.6"
   }
 }
