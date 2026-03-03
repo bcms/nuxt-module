@@ -49,5 +49,12 @@ export default createConfigForNuxt({
             //     },
             // ],
         },
+        ignores: [
+            'dist',
+            'node_modules',
+            'playground/.nuxt',
+            'playground/.output',
+            'playground/bcms',
+        ],
     },
 );
