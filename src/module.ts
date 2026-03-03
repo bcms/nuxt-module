@@ -185,15 +185,22 @@ export default defineNuxtModule<ModuleOptions>({
 
         const fs = new FS(process.cwd());
         nuxt.hook('build:before', async () => {
-            const types = await bcmsPrivate.typeGenerator.getFiles('ts');
-            for (let i = 0; i < types.length; i++) {
-                const type = types[i];
-                await fs.save(
-                    ['bcms', 'type', 'ts', ...type.path.split('/')],
-                    type.content,
+            try {
+                const types = await bcmsPrivate.typeGenerator.getFiles('ts');
+                for (let i = 0; i < types.length; i++) {
+                    const type = types[i];
+                    await fs.save(
+                        ['bcms', 'type', 'ts', ...type.path.split('/')],
+                        type.content,
+                    );
+                }
+                console.log('BCMS types generated');
+            } catch (error) {
+                console.warn(
+                    '\n\nBCMS: Failed to generate types: ./bcms/types/ts/* was not generated\n\n',
+                    error,
                 );
             }
-            console.log('BCMS types generated');
         });
         nuxt.hook('nitro:config', (nitroConfig) => {
             nitroConfig.imports = nitroConfig.imports || {};
